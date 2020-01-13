@@ -1,4 +1,12 @@
 <?php
+//if(have_posts()) {
+//	echo '<pre>';
+//	print_r(get_posts([
+//			'category' => 0
+//	]));
+//	echo '</pre>';
+//	die;
+//}
 get_header();
 ?>
 	<!-- ▼ TOPページ4枠 -->
@@ -9,7 +17,49 @@ get_header();
 					<div class="te-lg-articles__list__item__thumb">
 						<div
 							class="te-lg-articles__list__item__thumb__img"
-							style="background-image: url( /wp-content/uploads/2020/01/fullsizeoutput_7884-e1578357554830.jpeg );">
+							style="background-image: url( '/wp-content/uploads/2020/01/fullsizeoutput_7884-e1578357554830.jpeg' );">
+						</div>
+					</div>
+					<div class="te-lg-articles__list__item__content">
+						<h2 class="te-lg-articles__list__item__content__title">
+							画面を2つ折りにできるノートPC！ レノボが「ThinkPad X1 Fold」を今年発売へ      </h2>
+					</div>
+				</a>
+			</div>
+			<div class="te-lg-articles__list__item">
+				<a class="te-lg-articles__list__item__hit" href="/archives/114783">
+					<div class="te-lg-articles__list__item__thumb">
+						<div
+								class="te-lg-articles__list__item__thumb__img"
+								style="background-image: url( '/wp-content/uploads/2020/01/fullsizeoutput_7884-e1578357554830.jpeg' );">
+						</div>
+					</div>
+					<div class="te-lg-articles__list__item__content">
+						<h2 class="te-lg-articles__list__item__content__title">
+							画面を2つ折りにできるノートPC！ レノボが「ThinkPad X1 Fold」を今年発売へ      </h2>
+					</div>
+				</a>
+			</div>
+			<div class="te-lg-articles__list__item">
+				<a class="te-lg-articles__list__item__hit" href="/archives/114783">
+					<div class="te-lg-articles__list__item__thumb">
+						<div
+								class="te-lg-articles__list__item__thumb__img"
+								style="background-image: url( '/wp-content/uploads/2020/01/fullsizeoutput_7884-e1578357554830.jpeg' );">
+						</div>
+					</div>
+					<div class="te-lg-articles__list__item__content">
+						<h2 class="te-lg-articles__list__item__content__title">
+							画面を2つ折りにできるノートPC！ レノボが「ThinkPad X1 Fold」を今年発売へ      </h2>
+					</div>
+				</a>
+			</div>
+			<div class="te-lg-articles__list__item">
+				<a class="te-lg-articles__list__item__hit" href="/archives/114783">
+					<div class="te-lg-articles__list__item__thumb">
+						<div
+								class="te-lg-articles__list__item__thumb__img"
+								style="background-image: url( '/wp-content/uploads/2020/01/fullsizeoutput_7884-e1578357554830.jpeg' );">
 						</div>
 					</div>
 					<div class="te-lg-articles__list__item__content">
