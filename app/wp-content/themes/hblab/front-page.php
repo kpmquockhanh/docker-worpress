@@ -147,7 +147,7 @@ $posts = get_posts([
 								<div class="te-articles__list te-articles__list--type-list">
 									<!-- ▼ content.php -->
 									<?php foreach ($posts as $post) : ?>
-										<section class=" te-articles__list__item te-articles__list__item--cat-interview" id="">
+										<section class=" te-articles__list__item" id="">
 										<a class="te-articles__list__item__hit" href="<?= get_permalink($post->ID); ?>">
 											<div class="te-articles__list__item__inner">
 												<div class="te-articles__list__item__thumb">
@@ -200,44 +200,37 @@ $posts = get_posts([
 							<div class="te-section__body te-articles">
 								<div class="te-articles__list te-articles__list--type-list">
 									<!-- ▼ content.php -->
-									<section class=" te-articles__list__item te-articles__list__item--cat-tech" id="">
-										<a class="te-articles__list__item__hit" href="/archives/49978">
+									<?php foreach ($posts as $post) : ?>
+										<section class=" te-articles__list__item" id="">
+											<a class="te-articles__list__item__hit" href="<?= get_permalink($post->ID); ?>">
+												<div class="te-articles__list__item__inner">
+													<div class="te-articles__list__item__thumb">
+														<div class="te-articles__list__item__thumb__img"
+															 style="background-image: url( /wp-content/uploads/2020/01/d27329-181-725555-0.jpg );"></div>
+													</div>
+													<div class="te-articles__list__item__content">
+														<div class="te-articles__list__item__content__meta">
+															<time class="te-articles__list__item__content__meta__date" datetime="<?= $post->post_date; ?>">
+																<?= date_format(date_create($post->post_date), 'Y-m-d'); ?>
+															</time>
+															<p class="te-articles__list__item__content__meta__cat">
+																<?php foreach (get_the_category($post->ID) as $category) : ?>
+																	<span><?= $category->name . ',' ?></span>
+																<?php endforeach; ?>
+																<small><!-- サブ項目があれば smallタグが使用可能 --></small>
+															</p>
+														</div>
+														<h3 class="te-articles__list__item__content__title">
+															<?= $post->post_title; ?>
+														</h3>
+														<p class="te-articles__list__item__content__summary">
 
-											<div class="te-articles__list__item__inner">
-
-												<div class="te-articles__list__item__thumb">
-
-													<div class="te-articles__list__item__thumb__img" style="background-image: url( /wp-content/uploads/2016/11/001aa-300x225.png );"></div>
-												</div>
-
-												<div class="te-articles__list__item__content">
-													<div class="te-articles__list__item__content__meta">
-														<time class="te-articles__list__item__content__meta__date" datetime="2016-11-24">2016/11/24</time>
-														<p class="te-articles__list__item__content__meta__cat">
-															Tech            <small><!-- サブ項目があれば smallタグが使用可能 --></small>
 														</p>
 													</div>
-													<h3 class="te-articles__list__item__content__title">
-														<!--
-														  tha_title() です
-
-														  文字数の制御をお願いします。
-														  全角 60文字 (スマホ表示で3行ほど) が目安です。
-
-														-->
-														額にかざすだけで体温が測れる！スタイリッシュな体温計「Zeraph」        </h3>
-
-													<!--
-													  サマリーがある場合とない場合があります
-													  css側で 一行におさめています (... 処理)
-													-->
-													<p class="te-articles__list__item__content__summary">
-														寒さが厳しくなり、体調管理が大切になるこれからの時期。風邪をひいてしまった際に必需品となるのが体温計だが、「Zeraph」はユニークな形をした体温計。 風邪をひいてしまった時にも、ちょっと元気になれそうなルックスが魅力的...          </p>
-
 												</div>
-											</div>
-										</a>
-									</section>
+											</a>
+										</section>
+									<?php endforeach; ?>
 									<!-- △ content.php -->
 								</div>
 
