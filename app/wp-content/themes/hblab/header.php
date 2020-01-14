@@ -24,7 +24,7 @@
 
 	<?php wp_head(); ?>
 </head>
-<body class="is-toppage">
+<body class="">
 
 <!-- ▼ viewport -->
 <div class="te-viewport">
@@ -324,10 +324,10 @@
 				</div>
 
 				<div class="te-header__presented-by">
-					PRESENTED BY
-					<a href="http://mashmedia.co.jp/" target="_blank">
-						<img src="<?= get_template_directory_uri() . '/assets/images/logo-mashmedia.png' ?>" alt="MashMedia"/>
-					</a>
+<!--					PRESENTED BY-->
+<!--					<a href="http://mashmedia.co.jp/" target="_blank">-->
+<!--						<img src="--><?//= get_template_directory_uri() . '/assets/images/logo-mashmedia.png' ?><!--" alt="MashMedia"/>-->
+<!--					</a>-->
 				</div>
 
 				<p class="te-header__title">
