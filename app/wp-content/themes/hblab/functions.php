@@ -11,7 +11,7 @@ function my_register_styles(){
 	wp_register_script('velocity', get_template_directory_uri().'/assets/js/libs/velocity.min.js');
 	wp_register_script('jquery.ua', get_template_directory_uri().'/assets/js/libs/jquery.ua.min.js');
 	wp_register_script('jquery.easing', get_template_directory_uri().'/assets/js/libs/jquery.easing.min.js');
-//	wp_register_script('style', get_template_directory_uri().'/assets/js/style.min.js');
+	wp_register_script('header', get_template_directory_uri().'/assets/js/header.js');
 }
 add_action('wp_enqueue_scripts', 'my_enqueue_styles');
 function my_enqueue_styles () {
@@ -23,15 +23,22 @@ function my_enqueue_styles () {
 	wp_enqueue_script('velocity');
 	wp_enqueue_script('jquery.ua');
 	wp_enqueue_script('jquery.easing');
-//	wp_enqueue_script('style');
+	wp_enqueue_script('header');
 }
-function wpb_custom_new_menu() {
-    register_nav_menu('my-custom-menu',__( 'My Custom Menu' ));
-}
-add_action( 'init', 'wpb_custom_new_menu' );
-function register_my_menu() {
-    register_nav_menu('main-menu',__( 'MainMenu' ));
-}
-add_action( 'init', 'register_my_menu' );
 
+/**
+ *  Add class to a tag in menu
+ */
+add_filter( 'nav_menu_link_attributes', function($atts) {
+	$atts['class'] = "te-gnav__list__item__hit";
+	return $atts;
+}, 100, 1 );
+
+/**
+ *  Add class to li tag in menu
+ */
+add_filter('nav_menu_css_class', function($atts) {
+	$atts['class'] = "te-gnav__list__item";
+	return $atts;
+}, 100, 1 );
 ?>
