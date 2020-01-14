@@ -152,7 +152,7 @@ $posts = get_posts([
 											<div class="te-articles__list__item__inner">
 												<div class="te-articles__list__item__thumb">
 													<div class="te-articles__list__item__thumb__img"
-														 style="background-image: url( /wp-content/uploads/2020/01/d27329-181-725555-0.jpg );"></div>
+														 style="background-image: url( '<?= get_the_post_thumbnail_url($post) ?>' );"></div>
 												</div>
 												<div class="te-articles__list__item__content">
 													<div class="te-articles__list__item__content__meta">

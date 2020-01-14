@@ -26,6 +26,11 @@ function my_enqueue_styles () {
 	wp_enqueue_script('header');
 }
 
+function wpb_custom_new_menu() {
+	register_nav_menu('my-custom-menu',__( 'My Custom Menu' ));
+}
+add_action( 'init', 'wpb_custom_new_menu' );
+
 /**
  *  Init menu in wordpress admin page
  */
