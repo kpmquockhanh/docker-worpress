@@ -1,13 +1,13 @@
 <?php
-//if(have_posts()) {
-//	echo '<pre>';
-//	print_r(get_posts([
-//			'category' => 0
-//	]));
-//	echo '</pre>';
-//	die;
-//}
 get_header();
+$posts = get_posts([
+		'numberposts'		=> 5,
+		'orderby'          	=> 'date',
+		'order'            	=> 'DESC',
+]);
+//echo "<pre>";
+//var_dump($posts);
+//echo "</pre>";
 ?>
 	<!-- ▼ TOPページ4枠 -->
 	<div class="te-lg-articles">
@@ -135,9 +135,7 @@ get_header();
 				</div>
 			</div>
 
-
 			<div class="te-article-tab-panel__panel row">
-
 				<div id="panel-whatsnew" class="col-xs-12 col-md-6 te-article-tab-panel__panel__item is-active">
 					<div class="col-box">
 						<div class="te-section">
@@ -148,44 +146,37 @@ get_header();
 							<div class="te-section__body te-articles">
 								<div class="te-articles__list te-articles__list--type-list">
 									<!-- ▼ content.php -->
-									<section class=" te-articles__list__item te-articles__list__item--cat-interview" id="">
-										<a class="te-articles__list__item__hit" href="/archives/114744">
-
+									<?php foreach ($posts as $post) : ?>
+										<section class=" te-articles__list__item te-articles__list__item--cat-interview" id="">
+										<a class="te-articles__list__item__hit" href="<?= get_permalink($post->ID); ?>">
 											<div class="te-articles__list__item__inner">
-
 												<div class="te-articles__list__item__thumb">
-
-													<div class="te-articles__list__item__thumb__img" style="background-image: url( /wp-content/uploads/2020/01/d27329-181-725555-0.jpg );"></div>
+													<div class="te-articles__list__item__thumb__img"
+														 style="background-image: url( /wp-content/uploads/2020/01/d27329-181-725555-0.jpg );"></div>
 												</div>
-
 												<div class="te-articles__list__item__content">
 													<div class="te-articles__list__item__content__meta">
-														<time class="te-articles__list__item__content__meta__date" datetime="2020-01-06">2020/1/6</time>
+														<time class="te-articles__list__item__content__meta__date" datetime="<?= $post->post_date; ?>">
+															<?= date_format(date_create($post->post_date), 'Y-m-d'); ?>
+														</time>
 														<p class="te-articles__list__item__content__meta__cat">
-															Tech            <small><!-- サブ項目があれば smallタグが使用可能 --></small>
+															<?php foreach (get_the_category($post->ID) as $category) : ?>
+																<span><?= $category->name . ',' ?></span>
+															<?php endforeach; ?>
+															<small><!-- サブ項目があれば smallタグが使用可能 --></small>
 														</p>
 													</div>
 													<h3 class="te-articles__list__item__content__title">
-														<!--
-														  tha_title() です
-
-														  文字数の制御をお願いします。
-														  全角 60文字 (スマホ表示で3行ほど) が目安です。
-
-														-->
-														株式会社FiNC Technologies、約50億円調達。新体制に移行し事業展開加速        </h3>
-
-													<!--
-													  サマリーがある場合とない場合があります
-													  css側で 一行におさめています (... 処理)
-													-->
+														<?= $post->post_title; ?>
+													</h3>
 													<p class="te-articles__list__item__content__summary">
-														ヘルスケアアプリ「FiNC®️」などを提供するヘルステックベンチャー 株式会社FiNC Technologiesは、約50億円の資金調達を実施。これにより累計調達額は150億円強となった。 また今回、「食事画像解析」機能...          </p>
 
+													</p>
 												</div>
 											</div>
 										</a>
 									</section>
+									<?php endforeach; ?>
 									<!-- △ content.php -->
 								</div>
 								<div class="te-section__body__btn-bottom">
