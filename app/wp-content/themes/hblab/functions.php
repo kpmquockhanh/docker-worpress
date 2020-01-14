@@ -27,6 +27,22 @@ function my_enqueue_styles () {
 }
 
 /**
+ *  Init menu in wordpress admin page
+ */
+function wpb_custom_new_menu() {
+	register_nav_menu('my-custom-menu',__( 'My Custom Menu' ));
+}
+add_action( 'init', 'wpb_custom_new_menu' );
+
+/**
+ *  Register menu to show
+ */
+function register_my_menu() {
+	register_nav_menu('main-menu',__( 'MainMenu' ));
+}
+add_action( 'init', 'register_my_menu' );
+
+/**
  *  Add class to a tag in menu
  */
 add_filter( 'nav_menu_link_attributes', function($atts) {
