@@ -80,7 +80,7 @@ $popularPost = new WP_Query( array(
                                     <section class=" te-articles__list__item te-articles__list__item--cat-social-media"
                                              id="">
                                         <a class="te-articles__list__item__hit"
-                                           href="https://techable.jp/archives/113932">
+                                           href="<?php the_permalink() ?>">
 
                                             <div class="te-articles__list__item__inner">
 
@@ -144,14 +144,14 @@ $popularPost = new WP_Query( array(
 
                                 <div class="te-articles__list te-articles__list--type-list">
                                     <?php
-                                    while (have_posts() && $postNum >= $categoryID) { ?>
+                                    while (have_posts() && $postNum >= 4) { ?>
                                         <?php
                                         the_post(); ?>
                                         <section
                                                 class=" te-articles__list__item te-articles__list__item--cat-social-media"
                                                 id="">
                                             <a class="te-articles__list__item__hit"
-                                               href="https://techable.jp/archives/108$categoryID92">
+                                               href="<?php the_permalink() ?>">
 
                                                 <div class="te-articles__list__item__inner">
 
@@ -235,7 +235,7 @@ $popularPost = new WP_Query( array(
                                         ?>
                                         <!-- ▼ content.php -->
                                         <section class=" te-articles__list__item te-articles__list__item--cat-start-up" id="">
-                                            <a class="te-articles__list__item__hit" href="https://techable.jp/archives/115132">
+                                            <a class="te-articles__list__item__hit" href="<?php the_permalink() ?>">
 
                                                 <div class="te-articles__list__item__inner">
 

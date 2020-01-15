@@ -9,65 +9,45 @@ $posts = get_posts([
 //var_dump(get_custom_logo());
 //echo "</pre>";die;
 ?>
+<?php
+$latestPosts = new WP_Query( array(
+    'posts_per_page' => 9,
+    'orderby'          	=> 'date',
+    'order'            	=> 'DESC',
+));
+$count = 0;
+?>
+<?php
+$popularPost = new WP_Query( array(
+    'meta_key' => 'post_views_count',
+    'orderby' => 'meta_value_num',
+    'posts_per_page' => 5
+) );
+?>>
 	<!-- ▼ TOPページ4枠 -->
 	<div class="te-lg-articles">
 		<div class="te-lg-articles__list">
+        <?php
+        while ( $latestPosts->have_posts() && $count < 4 ) : $latestPosts->the_post();
+            $count++;
+            ?>
 			<div class="te-lg-articles__list__item">
-				<a class="te-lg-articles__list__item__hit" href="/archives/114783">
+				<a class="te-lg-articles__list__item__hit" href="<?php the_permalink() ?>">
 					<div class="te-lg-articles__list__item__thumb">
 						<div
 							class="te-lg-articles__list__item__thumb__img"
-							style="background-image: url( '/wp-content/uploads/2020/01/fullsizeoutput_7884-e1578357554830.jpeg' );">
+							style="background-image:"><?php the_post_thumbnail('single-post-thumbnail'); ?>
 						</div>
 					</div>
 					<div class="te-lg-articles__list__item__content">
 						<h2 class="te-lg-articles__list__item__content__title">
-							画面を2つ折りにできるノートPC！ レノボが「ThinkPad X1 Fold」を今年発売へ      </h2>
+                            <?php the_content(); ?></h2>
 					</div>
 				</a>
 			</div>
-			<div class="te-lg-articles__list__item">
-				<a class="te-lg-articles__list__item__hit" href="/archives/114783">
-					<div class="te-lg-articles__list__item__thumb">
-						<div
-								class="te-lg-articles__list__item__thumb__img"
-								style="background-image: url( '/wp-content/uploads/2020/01/fullsizeoutput_7884-e1578357554830.jpeg' );">
-						</div>
-					</div>
-					<div class="te-lg-articles__list__item__content">
-						<h2 class="te-lg-articles__list__item__content__title">
-							画面を2つ折りにできるノートPC！ レノボが「ThinkPad X1 Fold」を今年発売へ      </h2>
-					</div>
-				</a>
-			</div>
-			<div class="te-lg-articles__list__item">
-				<a class="te-lg-articles__list__item__hit" href="/archives/114783">
-					<div class="te-lg-articles__list__item__thumb">
-						<div
-								class="te-lg-articles__list__item__thumb__img"
-								style="background-image: url( '/wp-content/uploads/2020/01/fullsizeoutput_7884-e1578357554830.jpeg' );">
-						</div>
-					</div>
-					<div class="te-lg-articles__list__item__content">
-						<h2 class="te-lg-articles__list__item__content__title">
-							画面を2つ折りにできるノートPC！ レノボが「ThinkPad X1 Fold」を今年発売へ      </h2>
-					</div>
-				</a>
-			</div>
-			<div class="te-lg-articles__list__item">
-				<a class="te-lg-articles__list__item__hit" href="/archives/114783">
-					<div class="te-lg-articles__list__item__thumb">
-						<div
-								class="te-lg-articles__list__item__thumb__img"
-								style="background-image: url( '/wp-content/uploads/2020/01/fullsizeoutput_7884-e1578357554830.jpeg' );">
-						</div>
-					</div>
-					<div class="te-lg-articles__list__item__content">
-						<h2 class="te-lg-articles__list__item__content__title">
-							画面を2つ折りにできるノートPC！ レノボが「ThinkPad X1 Fold」を今年発売へ      </h2>
-					</div>
-				</a>
-			</div>
+        <?php
+        endwhile;
+        ?>
 		</div>
 	</div>
 	<!-- △ TOPページ4枠 -->
@@ -122,37 +102,39 @@ $posts = get_posts([
 							<div class="te-section__body te-articles">
 								<div class="te-articles__list te-articles__list--type-list">
 									<!-- ▼ content.php -->
-									<?php foreach ($posts as $post) : ?>
+                                    <?php
+                                    while ( $latestPosts->have_posts() && $count >= 4 ) : $latestPosts->the_post();
+                                        $count++;
+                                        ?>
 										<section class=" te-articles__list__item" id="">
-										<a class="te-articles__list__item__hit" href="<?= get_permalink($post->ID); ?>">
+										<a class="te-articles__list__item__hit" href="<?php the_permalink() ?>">
 											<div class="te-articles__list__item__inner">
 												<div class="te-articles__list__item__thumb">
 													<div class="te-articles__list__item__thumb__img"
-														 style="background-image: url( '<?= get_the_post_thumbnail_url($post) ?>' );"></div>
+														 style="background-image: url( '<?= get_the_post_thumbnail_url() ?>' );"></div>
 												</div>
 												<div class="te-articles__list__item__content">
 													<div class="te-articles__list__item__content__meta">
-														<time class="te-articles__list__item__content__meta__date" datetime="<?= $post->post_date; ?>">
-															<?= date_format(date_create($post->post_date), 'Y-m-d'); ?>
+														<time class="te-articles__list__item__content__meta__date" datetime="<?= get_the_date(); ?>">
+															<?= date_format((get_the_date()), 'Y-m-d'); ?>
 														</time>
 														<p class="te-articles__list__item__content__meta__cat">
-															<?php foreach (get_the_category($post->ID) as $category) : ?>
+															<?php foreach (get_the_category(get_the_ID()) as $category) : ?>
 																<span><?= $category->name . ',' ?></span>
 															<?php endforeach; ?>
 															<small><!-- サブ項目があれば smallタグが使用可能 --></small>
 														</p>
 													</div>
 													<h3 class="te-articles__list__item__content__title">
-														<?= $post->post_title; ?>
+                                                        <?php the_title(); ?>
 													</h3>
-													<p class="te-articles__list__item__content__summary">
-
-													</p>
+                                                    <div class="te-articles__list__item__content__summary">
+                                                        <?php the_content(); ?></div>
 												</div>
 											</div>
 										</a>
 									</section>
-									<?php endforeach; ?>
+									<?php endwhile; ?>
 									<!-- △ content.php -->
 								</div>
 								<div class="te-section__body__btn-bottom">
@@ -176,37 +158,38 @@ $posts = get_posts([
 							<div class="te-section__body te-articles">
 								<div class="te-articles__list te-articles__list--type-list">
 									<!-- ▼ content.php -->
-									<?php foreach ($posts as $post) : ?>
+                                    <?php
+                                    while ( $popularPost->have_posts()) : $popularPost->the_post();
+                                        ?>
 										<section class=" te-articles__list__item" id="">
-											<a class="te-articles__list__item__hit" href="<?= get_permalink($post->ID); ?>">
+											<a class="te-articles__list__item__hit" href="<?php the_permalink() ?>">
 												<div class="te-articles__list__item__inner">
 													<div class="te-articles__list__item__thumb">
 														<div class="te-articles__list__item__thumb__img"
-															 style="background-image: url( '<?= get_the_post_thumbnail_url($post) ?>' );"></div>
+															 style="background-image: url( '<?= get_the_post_thumbnail_url() ?>' );"></div>
 													</div>
 													<div class="te-articles__list__item__content">
 														<div class="te-articles__list__item__content__meta">
-															<time class="te-articles__list__item__content__meta__date" datetime="<?= $post->post_date; ?>">
-																<?= date_format(date_create($post->post_date), 'Y-m-d'); ?>
+															<time class="te-articles__list__item__content__meta__date" datetime="<?= get_the_date() ?>">
+																<?= date_format(get_the_date(), 'Y-m-d'); ?>
 															</time>
 															<p class="te-articles__list__item__content__meta__cat">
-																<?php foreach (get_the_category($post->ID) as $category) : ?>
+																<?php foreach (get_the_category() as $category) : ?>
 																	<span><?= $category->name . ',' ?></span>
 																<?php endforeach; ?>
 																<small><!-- サブ項目があれば smallタグが使用可能 --></small>
 															</p>
 														</div>
 														<h3 class="te-articles__list__item__content__title">
-															<?= $post->post_title; ?>
+                                                            <?php the_title(); ?>
 														</h3>
-														<p class="te-articles__list__item__content__summary">
-
-														</p>
+                                                        <div class="te-articles__list__item__content__summary">
+                                                            <?php the_content(); ?></div>
 													</div>
 												</div>
 											</a>
 										</section>
-									<?php endforeach; ?>
+									<?php endwhile; ?>
 									<!-- △ content.php -->
 								</div>
 
