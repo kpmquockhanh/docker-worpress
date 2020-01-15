@@ -11,6 +11,7 @@ function my_register_styles(){
 	wp_register_script('velocity', get_template_directory_uri().'/assets/js/libs/velocity.min.js');
 	wp_register_script('jquery.ua', get_template_directory_uri().'/assets/js/libs/jquery.ua.min.js');
 	wp_register_script('jquery.easing', get_template_directory_uri().'/assets/js/libs/jquery.easing.min.js');
+	wp_register_script('style', get_template_directory_uri().'/assets/js/formatStyle.min.js');
 }
 add_action('wp_enqueue_scripts', 'my_enqueue_styles');
 function my_enqueue_styles () {
@@ -22,6 +23,7 @@ function my_enqueue_styles () {
 	wp_enqueue_script('velocity');
 	wp_enqueue_script('jquery.ua');
 	wp_enqueue_script('jquery.easing');
+	wp_enqueue_script('style');
 }
 
 /**

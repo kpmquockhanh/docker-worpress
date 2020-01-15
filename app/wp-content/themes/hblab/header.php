@@ -38,17 +38,14 @@
 <!--					<img src="--><?php //echo get_template_directory_uri() . '/assets/images/logo-grd.svg'?><!--" alt="TECHABLE"/>-->
 				</a>
 			</p>
-			<ul class="te-gnav__list">
-				<li class="te-gnav__list__item"><a class="te-gnav__list__item__hit" href="https://techable.jp/archives/tag/インタビュー" title="INTERVIEW">INTERVIEW</a></li>
-				<li class="te-gnav__list__item"><a class="te-gnav__list__item__hit" href="https://techable.jp/archives/category/social-media" title="SOCIALMEDIA">SOCIALMEDIA</a></li>
-				<li class="te-gnav__list__item"><a class="te-gnav__list__item__hit" href="https://techable.jp/archives/category/tech" title="TECH">TECH</a></li>
-				<li class="te-gnav__list__item"><a class="te-gnav__list__item__hit" href="https://techable.jp/archives/category/mobile" title="MOBILE">MOBILE</a></li>
-				<li class="te-gnav__list__item"><a class="te-gnav__list__item__hit" href="https://techable.jp/archives/category/marketing" title="MARKETING">MARKETING</a></li>
-				<li class="te-gnav__list__item"><a class="te-gnav__list__item__hit" href="https://techable.jp/archives/category/enterprise" title="ENTERPRISE">ENTERPRISE</a></li>
-				<li class="te-gnav__list__item"><a class="te-gnav__list__item__hit" href="https://techable.jp/archives/category/start-up" title="START UP">START UP</a></li>
-				<li class="te-gnav__list__item"><a class="te-gnav__list__item__hit" href="https://techable.jp/archives/category/release/" title="RELEASE">RELEASE</a></li>
-				<li class="te-gnav__list__item"><a class="te-gnav__list__item__hit" href="https://techable.jp/ranking" title="RANKING">RANKING</a></li>
-			</ul>
+            <?php
+            wp_nav_menu( array(
+                'theme_location' => 'main-menu',
+                'container_class' => 'te-gnav__list',
+                'container' => 'ul',
+                'menu_class' => 'te-gnav__list',
+            ) );
+            ?>
 
 			<div class="te-gnav__btn-search">
 				<a class="te-gnav__btn-search__hit js-search-unit-trigger" href="#">
