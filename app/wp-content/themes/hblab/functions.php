@@ -11,7 +11,6 @@ function my_register_styles(){
 	wp_register_script('velocity', get_template_directory_uri().'/assets/js/libs/velocity.min.js');
 	wp_register_script('jquery.ua', get_template_directory_uri().'/assets/js/libs/jquery.ua.min.js');
 	wp_register_script('jquery.easing', get_template_directory_uri().'/assets/js/libs/jquery.easing.min.js');
-	wp_register_script('header', get_template_directory_uri().'/assets/js/header.js');
 }
 add_action('wp_enqueue_scripts', 'my_enqueue_styles');
 function my_enqueue_styles () {
@@ -23,7 +22,6 @@ function my_enqueue_styles () {
 	wp_enqueue_script('velocity');
 	wp_enqueue_script('jquery.ua');
 	wp_enqueue_script('jquery.easing');
-	wp_enqueue_script('header');
 }
 
 /**
@@ -57,4 +55,48 @@ add_filter('nav_menu_css_class', function($atts) {
 	$atts['class'] = "te-gnav__list__item";
 	return $atts;
 }, 100, 1 );
+
+/**
+ *
+ * Get views of post
+ * @return string
+ *
+ */
+function gt_get_post_view() {
+	$count = get_post_meta( get_the_ID(), 'post_views_count', true );
+	return "$count views";
+}
+
+/**
+ * Increase post view when user view a post
+ */
+function gt_set_post_view() {
+	$key = 'post_views_count';
+	$post_id = get_the_ID();
+	$count = (int) get_post_meta( $post_id, $key, true );
+	$count++;
+	update_post_meta( $post_id, $key, $count );
+}
+
+/**
+ * Add column post_views
+ * @param $columns
+ * @return mixed
+ */
+function gt_posts_column_views( $columns ) {
+	$columns['post_views'] = 'Views';
+	return $columns;
+}
+
+/**
+ * @param $column
+ */
+function gt_posts_custom_column_views( $column ) {
+	if ( $column === 'post_views') {
+		echo gt_get_post_view();
+	}
+}
+add_filter( 'manage_posts_columns', 'gt_posts_column_views' );
+add_action( 'manage_posts_custom_column', 'gt_posts_custom_column_views' );
+
 ?>

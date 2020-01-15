@@ -4,6 +4,14 @@
  * Template Post Type: post
  */
 get_header();  ?>
+<?php gt_set_post_view(); ?>
+<?php
+$popularPost = new WP_Query( array(
+    'meta_key' => 'post_views_count',
+    'orderby' => 'meta_value_num',
+    'posts_per_page' => 5
+) );
+?>
 <?php
 if ( have_posts() ) {
 	while ( have_posts() ) {
@@ -16,9 +24,8 @@ if ( have_posts() ) {
 
 					<div class="te-article__head__meta">
 						<time class="te-article__head__meta__date" datetime="2018-01-25">2018/1/25</time>
-						<p class="te-article__head__meta__cat">
-							Start Up          <small><!-- サブ項目があれば smallタグが使用可能 --></small>
-						</p>
+						<p class="te-article__head__meta__cat">Start Up<small><!-- サブ項目があれば smallタグが使用可能 --></small></p>
+                        <p class="te-article__head__meta__view"><?= gt_get_post_view(); ?></p>
 					</div>
 
 					<h1 class="te-article__head__title"><?php the_title(); ?></h1>
@@ -129,6 +136,11 @@ if ( have_posts() ) {
 												</div>
 												<div class="te-section__body">
 													<div class="te-articles__list te-articles__list--type-list te-articles__list--type-list--in-sidebar">
+                                                        <?php
+                                                        $rank = 0;
+                                                        while ( $popularPost->have_posts() ) : $popularPost->the_post();
+                                                        $rank++;
+                                                            ?>
 														<!-- ▼ content.php -->
 														<section class=" te-articles__list__item te-articles__list__item--cat-tech" id="">
 															<a class="te-articles__list__item__hit" href="https://techable.jp/archives/49978">
@@ -137,16 +149,20 @@ if ( have_posts() ) {
 
 																	<div class="te-articles__list__item__thumb">
 																		<!-- rankingの場合表示する -->
-																		<div class="te-articles__list__item__icon te-articles__list__item__icon--ranking">1</div>
+																		<div class="te-articles__list__item__icon te-articles__list__item__icon--ranking"><?php echo $rank;?></div>
 
-																		<div class="te-articles__list__item__thumb__img" style="background-image: url( https://techable.jp/wp-content/uploads/2016/11/001aa-300x225.png );"></div>
+																		<div class="te-articles__list__item__thumb__img" style="background-image:">
+                                                                            <?php the_post_thumbnail('single-post-thumbnail'); ?>
+                                                                        </div>
 																	</div>
 
 																	<div class="te-articles__list__item__content">
 																		<div class="te-articles__list__item__content__meta">
-																			<time class="te-articles__list__item__content__meta__date" datetime="2016-11-24">2016/11/24</time>
+																			<time class="te-articles__list__item__content__meta__date">
+                                                                                <?php echo get_the_date(); ?>
+                                                                            </time>
 																			<p class="te-articles__list__item__content__meta__cat">
-																				Tech            <small><!-- サブ項目があれば smallタグが使用可能 --></small>
+                                                                                <?php echo get_cat_name($categoryID); ?><small><!-- サブ項目があれば smallタグが使用可能 --></small>
 																			</p>
 																		</div>
 																		<h3 class="te-articles__list__item__content__title">
@@ -157,188 +173,23 @@ if ( have_posts() ) {
 																			  全角 60文字 (スマホ表示で3行ほど) が目安です。
 
 																			-->
-																			額にかざすだけで体温が測れる！スタイリッシュな体温計「Zeraph」        </h3>
+                                                                            <?php the_title(); ?>         </h3>
 
 																		<!--
 																		  サマリーがある場合とない場合があります
 																		  css側で 一行におさめています (... 処理)
 																		-->
 																		<p class="te-articles__list__item__content__summary">
-																			寒さが厳しくなり、体調管理が大切になるこれからの時期。風邪をひいてしまった際に必需品となるのが体温計だが、「Zeraph」はユニークな形をした体温計。 風邪をひいてしまった時にも、ちょっと元気になれそうなルックスが魅力的...          </p>
+                                                                            <?php the_content(); ?></p>
 
 																	</div>
 																</div>
 															</a>
 														</section>
 														<!-- △ content.php -->
-														<!-- ▼ content.php -->
-														<section class=" te-articles__list__item te-articles__list__item--cat-tech" id="">
-															<a class="te-articles__list__item__hit" href="https://techable.jp/archives/114622">
-
-																<div class="te-articles__list__item__inner">
-
-																	<div class="te-articles__list__item__thumb">
-																		<!-- rankingの場合表示する -->
-																		<div class="te-articles__list__item__icon te-articles__list__item__icon--ranking">2</div>
-
-																		<div class="te-articles__list__item__thumb__img" style="background-image: url( https://techable.jp/wp-content/uploads/2020/01/fullsizeoutput_783e-e1577909910935.jpeg );"></div>
-																	</div>
-
-																	<div class="te-articles__list__item__content">
-																		<div class="te-articles__list__item__content__meta">
-																			<time class="te-articles__list__item__content__meta__date" datetime="2020-01-04">2020/1/4</time>
-																			<p class="te-articles__list__item__content__meta__cat">
-																				Tech            <small><!-- サブ項目があれば smallタグが使用可能 --></small>
-																			</p>
-																		</div>
-																		<h3 class="te-articles__list__item__content__title">
-																			<!--
-																			  tha_title() です
-
-																			  文字数の制御をお願いします。
-																			  全角 60文字 (スマホ表示で3行ほど) が目安です。
-
-																			-->
-																			直射日光下でも鮮明に表示！ ボッシュが新スマートグラスシステム「Light Drive」公開へ        </h3>
-
-																		<!--
-																		  サマリーがある場合とない場合があります
-																		  css側で 一行におさめています (... 処理)
-																		-->
-																		<p class="te-articles__list__item__content__summary">
-																			ボッシュ・センサーテックは、スマートグラス向けのモジュール「Light Drive」を開発した。小さな躯体にMEMSミラーや光学部品、センサーなどを搭載するオールインワンタイプ。 網膜に画像を直接投影することで直射日光下...          </p>
-
-																	</div>
-																</div>
-															</a>
-														</section>
-														<!-- △ content.php -->
-														<!-- ▼ content.php -->
-														<section class=" te-articles__list__item te-articles__list__item--cat-tech" id="">
-															<a class="te-articles__list__item__hit" href="https://techable.jp/archives/114682">
-
-																<div class="te-articles__list__item__inner">
-
-																	<div class="te-articles__list__item__thumb">
-																		<!-- rankingの場合表示する -->
-																		<div class="te-articles__list__item__icon te-articles__list__item__icon--ranking">3</div>
-
-																		<div class="te-articles__list__item__thumb__img" style="background-image: url( https://techable.jp/wp-content/uploads/2020/01/fullsizeoutput_7858-e1578110039216.jpeg );"></div>
-																	</div>
-
-																	<div class="te-articles__list__item__content">
-																		<div class="te-articles__list__item__content__meta">
-																			<time class="te-articles__list__item__content__meta__date" datetime="2020-01-06">2020/1/6</time>
-																			<p class="te-articles__list__item__content__meta__cat">
-																				Tech            <small><!-- サブ項目があれば smallタグが使用可能 --></small>
-																			</p>
-																		</div>
-																		<h3 class="te-articles__list__item__content__title">
-																			<!--
-																			  tha_title() です
-
-																			  文字数の制御をお願いします。
-																			  全角 60文字 (スマホ表示で3行ほど) が目安です。
-
-																			-->
-																			セグウェイが座ってくつろぎながら移動できるモビリティ「S-Pod」発表！        </h3>
-
-																		<!--
-																		  サマリーがある場合とない場合があります
-																		  css側で 一行におさめています (... 処理)
-																		-->
-																		<p class="te-articles__list__item__content__summary">
-																			セルフバランスを取りながらの乗り物といえば、Segway（セグウェイ）の電動立ち乗り二輪車を思い浮かべる人は多いだろう。その同じ開発元から、新たなモビリティが発表された。 今度は座れるポッド状デザインの、その名も「S-P...          </p>
-
-																	</div>
-																</div>
-															</a>
-														</section>
-														<!-- △ content.php -->
-														<!-- ▼ content.php -->
-														<section class=" te-articles__list__item te-articles__list__item--cat-enterprise" id="">
-															<a class="te-articles__list__item__hit" href="https://techable.jp/archives/114553">
-
-																<div class="te-articles__list__item__inner">
-
-																	<div class="te-articles__list__item__thumb">
-																		<!-- rankingの場合表示する -->
-																		<div class="te-articles__list__item__icon te-articles__list__item__icon--ranking">4</div>
-
-																		<div class="te-articles__list__item__thumb__img" style="background-image: url( https://techable.jp/wp-content/uploads/2019/12/191228jeparticipe1.jpg );"></div>
-																	</div>
-
-																	<div class="te-articles__list__item__content">
-																		<div class="te-articles__list__item__content__meta">
-																			<time class="te-articles__list__item__content__meta__date" datetime="2020-01-05">2020/1/5</time>
-																			<p class="te-articles__list__item__content__meta__cat">
-																				Enterprise            <small><!-- サブ項目があれば smallタグが使用可能 --></small>
-																			</p>
-																		</div>
-																		<h3 class="te-articles__list__item__content__title">
-																			<!--
-																			  tha_title() です
-
-																			  文字数の制御をお願いします。
-																			  全角 60文字 (スマホ表示で3行ほど) が目安です。
-
-																			-->
-																			食と農業に特化したカルフールのクラウドファンディングプラットフォーム        </h3>
-
-																		<!--
-																		  サマリーがある場合とない場合があります
-																		  css側で 一行におさめています (... 処理)
-																		-->
-																		<p class="te-articles__list__item__content__summary">
-																			欧州最大のスーパーマーケットチェーンCarrefour（カルフール）は、食と農業に特化したフランスのクラウドファンディングサービス「MiiMOSA」と提携し、独自のクラウドファンディングプラットフォーム「JePartic...          </p>
-
-																	</div>
-																</div>
-															</a>
-														</section>
-														<!-- △ content.php -->
-														<!-- ▼ content.php -->
-														<section class=" te-articles__list__item te-articles__list__item--cat-mobile" id="">
-															<a class="te-articles__list__item__hit" href="https://techable.jp/archives/114537">
-
-																<div class="te-articles__list__item__inner">
-
-																	<div class="te-articles__list__item__thumb">
-																		<!-- rankingの場合表示する -->
-																		<div class="te-articles__list__item__icon te-articles__list__item__icon--ranking">5</div>
-
-																		<div class="te-articles__list__item__thumb__img" style="background-image: url( https://techable.jp/wp-content/uploads/2019/12/fullsizeoutput_7828-e1577481460497.jpeg );"></div>
-																	</div>
-
-																	<div class="te-articles__list__item__content">
-																		<div class="te-articles__list__item__content__meta">
-																			<time class="te-articles__list__item__content__meta__date" datetime="2020-01-05">2020/1/5</time>
-																			<p class="te-articles__list__item__content__meta__cat">
-																				Mobile            <small><!-- サブ項目があれば smallタグが使用可能 --></small>
-																			</p>
-																		</div>
-																		<h3 class="te-articles__list__item__content__title">
-																			<!--
-																			  tha_title() です
-
-																			  文字数の制御をお願いします。
-																			  全角 60文字 (スマホ表示で3行ほど) が目安です。
-
-																			-->
-																			iPhoneとiPad Proで共用できるフラッシュドライブ「iKlip C」が便利そう！        </h3>
-
-																		<!--
-																		  サマリーがある場合とない場合があります
-																		  css側で 一行におさめています (... 処理)
-																		-->
-																		<p class="te-articles__list__item__content__summary">
-																			モバイル端末のバックアップをとったり、データを移送したりするのに使えるのがフラッシュドライブ。しかし端末によってポートが異なるために、読者の中には複数使い分けている人もいるだろう。 そんなApple製モバイル端末ユーザー...          </p>
-
-																	</div>
-																</div>
-															</a>
-														</section>
-														<!-- △ content.php -->
+                                                        <?php
+                                                        endwhile;
+                                                        ?>
 													</div>
 
 													<div class="te-section__body__btn-bottom">
