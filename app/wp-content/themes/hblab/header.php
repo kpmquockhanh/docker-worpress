@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=no">
 
 	<title>
-		Techable（テッカブル） -海外・国内のネットベンチャー系ニュースサイト | Techable（テッカブル）は、国内外の最先端のスタートアップベンチャーを紹介するニュースサイトです。
+		<?= get_bloginfo('name'); ?> | <?= get_bloginfo('description'); ?>
 	</title>
 
 	<!-- favicon -->
