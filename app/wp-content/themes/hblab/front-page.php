@@ -6,8 +6,8 @@ $posts = get_posts([
 		'order'            	=> 'DESC',
 ]);
 //echo "<pre>";
-//var_dump($posts);
-//echo "</pre>";
+//var_dump(get_custom_logo());
+//echo "</pre>";die;
 ?>
 	<!-- ▼ TOPページ4枠 -->
 	<div class="te-lg-articles">
@@ -77,36 +77,12 @@ $posts = get_posts([
 		<h2 class="te-top-tags__title">注目のキーワード</h2>
 		<div class="te-tags">
 			<ul class="te-tags__list">
-				<li class="te-tags__list__item">
-					<a class="te-tags__list__item__hit" href="/archives/tag/kickstarter">Kickstarter</a>
-				</li>
-				<li class="te-tags__list__item">
-					<a class="te-tags__list__item__hit" href="/archives/tag/indiegogo">Indiegogo</a>
-				</li>
-				<li class="te-tags__list__item">
-					<a class="te-tags__list__item__hit" href="/archives/tag/%e3%82%a4%e3%83%b3%e3%82%bf%e3%83%93%e3%83%a5%e3%83%bc">インタビュー</a>
-				</li>
-				<li class="te-tags__list__item">
-					<a class="te-tags__list__item__hit" href="/archives/tag/%e3%82%af%e3%83%a9%e3%82%a6%e3%83%89%e3%83%95%e3%82%a1%e3%83%b3%e3%83%87%e3%82%a3%e3%83%b3%e3%82%b0">クラウドファンディング</a>
-				</li>
-				<li class="te-tags__list__item">
-					<a class="te-tags__list__item__hit" href="/archives/tag/iphone">iPhone</a>
-				</li>
-				<li class="te-tags__list__item">
-					<a class="te-tags__list__item__hit" href="/archives/tag/android">Android</a>
-				</li>
-				<li class="te-tags__list__item">
-					<a class="te-tags__list__item__hit" href="/archives/tag/facebook">Facebook</a>
-				</li>
-				<li class="te-tags__list__item">
-					<a class="te-tags__list__item__hit" href="/archives/tag/ai">AI</a>
-				</li>
-				<li class="te-tags__list__item">
-					<a class="te-tags__list__item__hit" href="/archives/tag/ios">iOS</a>
-				</li>
-				<li class="te-tags__list__item">
-					<a class="te-tags__list__item__hit" href="/archives/tag/google">google</a>
-				</li>
+				<?php foreach (get_tags() as $tag) : ?>
+					<li class="te-tags__list__item">
+						<a class="te-tags__list__item__hit" href="<?= get_tag_link($tag) ?>"><?=$tag->name?></a>
+					</li>
+				<?php endforeach; ?>
+
 			</ul>
 		</div>
 	</div>
