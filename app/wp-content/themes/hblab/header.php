@@ -34,7 +34,8 @@
 		<nav class="te-gnav">
 			<p class="te-gnav__title">
 				<a class="te-gnav__title__hit" href="https://techable.jp">
-					<img src="<?php echo get_template_directory_uri() . '/assets/images/logo-grd.svg'?>" alt="TECHABLE"/>
+					<?php the_custom_logo(); ?>
+<!--					<img src="--><?php //echo get_template_directory_uri() . '/assets/images/logo-grd.svg'?><!--" alt="TECHABLE"/>-->
 				</a>
 			</p>
 			<ul class="te-gnav__list">
@@ -97,46 +98,13 @@
 
 				<div class="te-search-modal__tags">
 					<ul class="te-search-modal__tags__list">
-						<li class="te-search-modal__tags__list__item">
-							<a class="te-search-modal__tags__list__item__hit" href="https://techable.jp/archives/tag/kickstarter">
-								Kickstarter                </a>
-						</li>
-						<li class="te-search-modal__tags__list__item">
-							<a class="te-search-modal__tags__list__item__hit" href="https://techable.jp/archives/tag/indiegogo">
-								Indiegogo                </a>
-						</li>
-						<li class="te-search-modal__tags__list__item">
-							<a class="te-search-modal__tags__list__item__hit" href="https://techable.jp/archives/tag/%e3%82%a4%e3%83%b3%e3%82%bf%e3%83%93%e3%83%a5%e3%83%bc">
-								インタビュー                </a>
-						</li>
-						<li class="te-search-modal__tags__list__item">
-							<a class="te-search-modal__tags__list__item__hit" href="https://techable.jp/archives/tag/%e3%82%af%e3%83%a9%e3%82%a6%e3%83%89%e3%83%95%e3%82%a1%e3%83%b3%e3%83%87%e3%82%a3%e3%83%b3%e3%82%b0">
-								クラウドファンディング                </a>
-						</li>
-						<li class="te-search-modal__tags__list__item">
-							<a class="te-search-modal__tags__list__item__hit" href="https://techable.jp/archives/tag/iphone">
-								iPhone                </a>
-						</li>
-						<li class="te-search-modal__tags__list__item">
-							<a class="te-search-modal__tags__list__item__hit" href="https://techable.jp/archives/tag/android">
-								Android                </a>
-						</li>
-						<li class="te-search-modal__tags__list__item">
-							<a class="te-search-modal__tags__list__item__hit" href="https://techable.jp/archives/tag/facebook">
-								Facebook                </a>
-						</li>
-						<li class="te-search-modal__tags__list__item">
-							<a class="te-search-modal__tags__list__item__hit" href="https://techable.jp/archives/tag/ai">
-								AI                </a>
-						</li>
-						<li class="te-search-modal__tags__list__item">
-							<a class="te-search-modal__tags__list__item__hit" href="https://techable.jp/archives/tag/ios">
-								iOS                </a>
-						</li>
-						<li class="te-search-modal__tags__list__item">
-							<a class="te-search-modal__tags__list__item__hit" href="https://techable.jp/archives/tag/google">
-								google                </a>
-						</li>
+						<?php foreach (get_tags() as $tag) : ?>
+							<li class="te-search-modal__tags__list__item">
+								<a class="te-search-modal__tags__list__item__hit" href="https://techable.jp/archives/tag/kickstarter">
+									Demo
+								</a>
+							</li>
+						<?php endforeach; ?>
 					</ul>
 				</div>
 			</div>
@@ -154,8 +122,9 @@
 		<div class="te-sp-header__inner">
 			<h1 class="te-sp-header__title">
 				<a class="te-sp-header__title__hit" href="https://techable.jp">
-					<img class="te-sp-header__title__g" src="<?= get_template_directory_uri() . '/assets/images/logo-grd.svg' ?>" alt="TECHABLE"/>
-					<img class="te-sp-header__title__w" src="<?= get_template_directory_uri() . '/assets/images/logo-w.svg' ?>" alt="TECHABLE"/>
+					<?php the_custom_logo(); ?>
+<!--					<img class="te-sp-header__title__g" src="--><?//= get_template_directory_uri() . '/assets/images/logo-grd.svg' ?><!--" alt="TECHABLE"/>-->
+<!--					<img class="te-sp-header__title__w" src="--><?//= get_template_directory_uri() . '/assets/images/logo-w.svg' ?><!--" alt="TECHABLE"/>-->
 				</a>
 			</h1>
 			<div class="te-sp-header__btn-search">
@@ -290,8 +259,7 @@
 		<header class="te-header">
 			<div class="te-header__inner">
 				<!--  詳細ページでは記事をh1タグにする -->
-				<h1 class="te-header__lead">海外・国内のベンチャー系ニュースサイト | TECHABLE</h1>
-
+				<h1 class="te-header__lead"><?= get_theme_mod('your_word') ?></h1>
 				<div class="te-header__nav-sns">
 					<!-- ▼ sns-icon-nav -->
 					<div class="te-sns-icon-nav">
@@ -329,7 +297,8 @@
 
 				<p class="te-header__title">
 					<a class="te-header__title__hit" href="https://techable.jp">
-						<img src="<?= get_template_directory_uri() . '/assets/images/logo-grd.svg'?>" alt="TECHABLE"/>
+						<?php the_custom_logo(); ?>
+<!--						<img src="--><?//= get_template_directory_uri() . '/assets/images/logo-grd.svg'?><!--" alt="TECHABLE"/>-->
 					</a>
 				</p>
 
@@ -338,7 +307,8 @@
 
 					<p class="te-gnav__title">
 						<a class="te-gnav__title__hit" href="https://techable.jp">
-							<img src="<?= get_template_directory_uri() . '/assets/images/logo-grd.svg'?>" alt="TECHABLE"/>
+							<?php the_custom_logo(); ?>
+<!--							<img src="--><?//= get_template_directory_uri() . '/assets/images/logo-grd.svg'?><!--" alt="TECHABLE"/>-->
 						</a>
 					</p>
                     <?php

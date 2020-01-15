@@ -57,6 +57,32 @@ add_filter('nav_menu_css_class', function($atts) {
 }, 100, 1 );
 
 /**
+ * Add custom logo
+ */
+add_theme_support( 'custom-logo', [
+	'height' => 45,
+	'width'  => 224,
+]);
+
+/**
+ * Create control setting your word
+ */
+function add_your_word_setting($wp_customize) {
+	// add a setting for the site logo
+	$wp_customize->add_setting('your_word');
+	// Add a control to upload the logo
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'your_word',
+			array(
+				'label' => 'Your word',
+				'section' => 'title_tagline',
+				'settings' => 'your_word',
+			)
+		)
+	);
+}
+add_action( 'customize_register', 'add_your_word_setting' );
+
+/**
  *
  * Get views of post
  * @return string
