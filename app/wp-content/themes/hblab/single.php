@@ -143,7 +143,7 @@ if ( have_posts() ) {
                                                             ?>
 														<!-- ▼ content.php -->
 														<section class=" te-articles__list__item te-articles__list__item--cat-tech" id="">
-															<a class="te-articles__list__item__hit" href="https://techable.jp/archives/49978">
+															<a class="te-articles__list__item__hit" href="<?php the_permalink() ?>">
 
 																<div class="te-articles__list__item__inner">
 
