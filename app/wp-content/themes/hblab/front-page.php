@@ -41,7 +41,8 @@ $popularPost = new WP_Query( array(
 					</div>
 					<div class="te-lg-articles__list__item__content">
 						<h2 class="te-lg-articles__list__item__content__title">
-                            <?php the_content(); ?></h2>
+                            <?php the_title(); ?>
+						</h2>
 					</div>
 				</a>
 			</div>
@@ -116,7 +117,7 @@ $popularPost = new WP_Query( array(
 												<div class="te-articles__list__item__content">
 													<div class="te-articles__list__item__content__meta">
 														<time class="te-articles__list__item__content__meta__date" datetime="<?= get_the_date(); ?>">
-															<?= date_format((get_the_date()), 'Y-m-d'); ?>
+															<?= date_format(date_create(get_the_date()), 'Y-m-d'); ?>
 														</time>
 														<p class="te-articles__list__item__content__meta__cat">
 															<?php foreach (get_the_category(get_the_ID()) as $category) : ?>
@@ -129,7 +130,8 @@ $popularPost = new WP_Query( array(
                                                         <?php the_title(); ?>
 													</h3>
                                                     <div class="te-articles__list__item__content__summary">
-                                                        <?php the_content(); ?></div>
+	                                                    <?= substr(get_the_content(), 0, 100) . (strlen(get_the_content()) > 100 ? '...':'')  ?>
+													</div>
 												</div>
 											</div>
 										</a>
@@ -171,7 +173,7 @@ $popularPost = new WP_Query( array(
 													<div class="te-articles__list__item__content">
 														<div class="te-articles__list__item__content__meta">
 															<time class="te-articles__list__item__content__meta__date" datetime="<?= get_the_date() ?>">
-																<?= date_format(get_the_date(), 'Y-m-d'); ?>
+																<?= date_format(new DateTime(get_the_date()), 'Y-m-d'); ?>
 															</time>
 															<p class="te-articles__list__item__content__meta__cat">
 																<?php foreach (get_the_category() as $category) : ?>
@@ -184,7 +186,8 @@ $popularPost = new WP_Query( array(
                                                             <?php the_title(); ?>
 														</h3>
                                                         <div class="te-articles__list__item__content__summary">
-                                                            <?php the_content(); ?></div>
+	                                                        <?= substr(get_the_content(), 0, 100) . (strlen(get_the_content()) > 100 ? '...':'')  ?>
+														</div>
 													</div>
 												</div>
 											</a>
