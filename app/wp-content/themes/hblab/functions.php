@@ -27,36 +27,43 @@ function my_enqueue_styles () {
 }
 
 /**
- *  Init menu in wordpress admin page
- */
-function wpb_custom_new_menu() {
-	register_nav_menu('my-custom-menu',__( 'My Custom Menu' ));
-}
-add_action( 'init', 'wpb_custom_new_menu' );
-
-/**
  *  Register menu to show
  */
 function register_my_menu() {
-	register_nav_menu('main-menu',__( 'MainMenu' ));
+	register_nav_menu('main-menu',__( 'Main menu' ));
+	register_nav_menu('footer-menu',__( 'Footer menu' ));
+
+
+	/**
+	 *  Add class to a tag in menu
+	 */
+	add_filter( 'nav_menu_link_attributes', function($atts, $item, $args) {
+		if ($args->theme_location === 'main-menu') {
+			$atts['class'] = "te-gnav__list__item__hit";
+		}
+		if ($args->theme_location === 'footer-menu') {
+			$atts['class'] = "te-footer__nav__list__item__hit";
+		}
+		return $atts;
+	}, 100, 3 );
+
+	/**
+	 *  Add class to li tag in menu
+	 */
+	add_filter('nav_menu_css_class', function($atts, $item, $args) {
+		if ($args->theme_location === 'main-menu') {
+			$atts['class'] = "te-gnav__list__item";
+		}
+		if ($args->theme_location === 'footer-menu') {
+			$atts['class'] = 'te-footer__nav__list__item';
+		}
+		return $atts;
+	}, 100, 3 );
+
 }
 add_action( 'init', 'register_my_menu' );
 
-/**
- *  Add class to a tag in menu
- */
-add_filter( 'nav_menu_link_attributes', function($atts) {
-	$atts['class'] = "te-gnav__list__item__hit";
-	return $atts;
-}, 100, 1 );
 
-/**
- *  Add class to li tag in menu
- */
-add_filter('nav_menu_css_class', function($atts) {
-	$atts['class'] = "te-gnav__list__item";
-	return $atts;
-}, 100, 1 );
 
 /**
  * Add custom logo

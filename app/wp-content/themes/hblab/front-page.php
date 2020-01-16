@@ -23,7 +23,7 @@ $popularPost = new WP_Query( array(
     'orderby' => 'meta_value_num',
     'posts_per_page' => 5
 ) );
-?>>
+?>
 	<!-- ▼ TOPページ4枠 -->
 	<div class="te-lg-articles">
 		<div class="te-lg-articles__list">
@@ -36,7 +36,7 @@ $popularPost = new WP_Query( array(
 					<div class="te-lg-articles__list__item__thumb">
 						<div
 							class="te-lg-articles__list__item__thumb__img"
-							style="background-image:"><?php the_post_thumbnail('single-post-thumbnail'); ?>
+							style="background-image: url( '<?= get_the_post_thumbnail_url() ?>' );">
 						</div>
 					</div>
 					<div class="te-lg-articles__list__item__content">
@@ -211,28 +211,28 @@ $popularPost = new WP_Query( array(
 		</div>
 	</div>
 
-	<section class="te-section">
-		<div class="te-section__head">
-			<h2 class="te-section__head__title">RECOMMEND SERVICE</h2>
-		</div>
-		<div class="te-section__body">
-			<div class="te-article-page">
-				<div class="te-article-page__body te-cms-body">
-					<table class="te-article-page__table">
-						<tbody>
-						<tr>
-							<th>レコメンド</th>
-							<td>
-								<p style="margin-top: 0;"><a href="https://tayori.com/" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i> 無料フォームならTayori</a></p>
-								<p><a href="https://www.jooto.com/" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i> 無料タスク管理・プロジェクト管理ツールならJooto</a></p>
-								<p><a href="https://webclipping.jp" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i> 広報・PRの効果測定ツールならWebクリッピング</a></p>
-							</td>
-						</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</section>
+<!--	<section class="te-section">-->
+<!--		<div class="te-section__head">-->
+<!--			<h2 class="te-section__head__title">RECOMMEND SERVICE</h2>-->
+<!--		</div>-->
+<!--		<div class="te-section__body">-->
+<!--			<div class="te-article-page">-->
+<!--				<div class="te-article-page__body te-cms-body">-->
+<!--					<table class="te-article-page__table">-->
+<!--						<tbody>-->
+<!--						<tr>-->
+<!--							<th>レコメンド</th>-->
+<!--							<td>-->
+<!--								<p style="margin-top: 0;"><a href="https://tayori.com/" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i> 無料フォームならTayori</a></p>-->
+<!--								<p><a href="https://www.jooto.com/" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i> 無料タスク管理・プロジェクト管理ツールならJooto</a></p>-->
+<!--								<p><a href="https://webclipping.jp" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i> 広報・PRの効果測定ツールならWebクリッピング</a></p>-->
+<!--							</td>-->
+<!--						</tr>-->
+<!--						</tbody>-->
+<!--					</table>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--	</section>-->
 <?php
 get_footer();
