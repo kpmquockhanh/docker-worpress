@@ -50,11 +50,11 @@
 							<div class="te-footer__title">
 								<p class="te-footer__title__logo">
 									<a href="https://techable.jp">
-										<img src="<?= get_template_directory_uri() . '/assets/images/logo-k.svg'?>" alt="TECHABLE"/>
+										<?php the_custom_logo(); ?>
 									</a>
 								</p>
 								<p class="te-footer__title__text">
-									Techable(テッカブル)は、テクノロジー、ソーシャルメディア、マーケティングの最新トレンドや、次代をつくる国内外のスタートアップベンチャーのニュースを 配信するニュースサイトです。
+									<?= get_theme_mod('your_word') ?>
 								</p>
 							</div>
 
