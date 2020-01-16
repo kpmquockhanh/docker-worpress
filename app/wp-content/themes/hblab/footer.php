@@ -9,13 +9,13 @@
 					<div class="te-footer__layout">
 						<div class="te-footer__layout__head">
 							<nav class="te-footer__nav">
-								<ul class="te-footer__nav__list">
-									<li class="te-footer__nav__list__item"><a class="te-footer__nav__list__item__hit" href="https://techable.jp/contact" title="ライター募集">ライター募集</a></li>
-									<li class="te-footer__nav__list__item"><a class="te-footer__nav__list__item__hit" href="https://techable.jp/privacy" title="プライバシーポリシー">プライバシーポリシー</a></li>
-									<li class="te-footer__nav__list__item"><a class="te-footer__nav__list__item__hit" href="https://techable.jp/contact" title="プレスリリース募集">プレスリリース募集</a></li>
-									<li class="te-footer__nav__list__item"><a class="te-footer__nav__list__item__hit" href="https://techable.jp/contact" title="お問い合わせ">お問い合わせ</a></li>
-									<li class="te-footer__nav__list__item"><a class="te-footer__nav__list__item__hit" href="https://techable.jp/corporate" title="TECHABLEについて">TECHABLEについて</a></li>
-								</ul>
+								<?php
+								wp_nav_menu( array(
+									'theme_location' => 'footer-menu',
+									'container' => 'ul',
+									'menu_class' => 'te-footer__nav__list',
+								) );
+								?>
 							</nav>
 							<nav class="te-footer__nav-sns">
 								<!-- ▼ sns-icon-nav -->
