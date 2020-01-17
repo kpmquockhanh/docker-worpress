@@ -104,13 +104,17 @@ function gt_get_post_view() {
 
 /**
  * Increase post view when user view a post
+ * Check if viewer is in session
  */
 function gt_set_post_view() {
 	$key = 'post_views_count';
 	$post_id = get_the_ID();
-	$count = (int) get_post_meta( $post_id, $key, true );
-	$count++;
-	update_post_meta( $post_id, $key, $count );
+	if(!isset($_SESSION["viewed_post" . $post_id])) {
+		$_SESSION["viewed_post" . $post_id] = 1;
+		$old_views = get_post_meta( $post_id, $key, true );
+		$new_views = absint( $old_views ) + 1;
+		update_post_meta( $post_id, $key, $new_views, $old_views );
+	}
 }
 
 /**
