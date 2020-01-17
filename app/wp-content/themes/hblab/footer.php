@@ -14,6 +14,9 @@
 									'theme_location' => 'footer-menu',
 									'container' => 'ul',
 									'menu_class' => 'te-footer__nav__list',
+									'fallback_cb' => function () {
+										echo 'No footer menu';
+									}
 								) );
 								?>
 							</nav>
