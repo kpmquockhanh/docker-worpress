@@ -3,6 +3,7 @@
  * Template Name: New Template
  * Template Post Type: post
  */
+session_start();
 get_header();  ?>
 <?php gt_set_post_view(); ?>
 <?php
