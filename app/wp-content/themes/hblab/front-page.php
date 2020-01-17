@@ -130,7 +130,7 @@ $popularPost = new WP_Query( array(
                                                         <?php the_title(); ?>
 													</h3>
                                                     <div class="te-articles__list__item__content__summary">
-	                                                    <?= substr(get_the_content(), 0, 100) . (strlen(get_the_content()) > 100 ? '...':'')  ?>
+	                                                    <?= substr(strip_tags(get_the_content()), 0, 100) . (strlen(get_the_content()) > 100 ? '...':'')  ?>
 													</div>
 												</div>
 											</div>
@@ -168,12 +168,12 @@ $popularPost = new WP_Query( array(
 												<div class="te-articles__list__item__inner">
 													<div class="te-articles__list__item__thumb">
 														<div class="te-articles__list__item__thumb__img"
-															 style="background-image: url( '<?= get_the_post_thumbnail_url() ?>' );"></div>
+															 style="background-image: url(<?= get_the_post_thumbnail_url() ?>)"></div>
 													</div>
 													<div class="te-articles__list__item__content">
 														<div class="te-articles__list__item__content__meta">
 															<time class="te-articles__list__item__content__meta__date" datetime="<?= get_the_date() ?>">
-																<?= date_format(new DateTime(get_the_date()), 'Y-m-d'); ?>
+																<?= date_format(date_create(get_the_date()), 'Y-m-d'); ?>
 															</time>
 															<p class="te-articles__list__item__content__meta__cat">
 																<?php foreach (get_the_category() as $category) : ?>
@@ -186,7 +186,7 @@ $popularPost = new WP_Query( array(
                                                             <?php the_title(); ?>
 														</h3>
                                                         <div class="te-articles__list__item__content__summary">
-	                                                        <?= substr(get_the_content(), 0, 100) . (strlen(get_the_content()) > 100 ? '...':'')  ?>
+	                                                        <?= substr(strip_tags(get_the_content()), 0, 100) . (strlen(get_the_content()) > 100 ? '...':'')  ?>
 														</div>
 													</div>
 												</div>

@@ -97,8 +97,8 @@
 					<ul class="te-search-modal__tags__list">
 						<?php foreach (get_tags() as $tag) : ?>
 							<li class="te-search-modal__tags__list__item">
-								<a class="te-search-modal__tags__list__item__hit" href="https://techable.jp/archives/tag/kickstarter">
-									Demo
+								<a class="te-search-modal__tags__list__item__hit" href="<?= get_tag_link( $tag ) ?>">
+									<?= $tag->name ?>
 								</a>
 							</li>
 						<?php endforeach; ?>
