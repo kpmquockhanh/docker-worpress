@@ -39,6 +39,9 @@ if ( have_posts() ) {
 				</div>
 			</div>
 			<!-- △ article head -->
+            <div class="te-article__main-picture te-bg-slash">
+                <img width="300" height="168" src="<?= get_the_post_thumbnail_url() ?>" class="attachment-medium size-medium wp-post-image" alt="" >
+            </div>
 			<!-- ▼ article body -->
 			<div class="te-article__body">
 
