@@ -6,6 +6,7 @@ function my_register_styles(){
 	wp_register_style('fa', get_template_directory_uri().'/assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css');
 	wp_register_style('yakuhanjp', get_template_directory_uri().'/assets/fonts/yakuhanjp-master/dist/css/yakuhanjp_s.min.css');
 	wp_register_style('main', get_template_directory_uri().'/assets/css/main.css');
+	wp_register_style('post', get_template_directory_uri(). '/assets/css/postStyle.css');
 	wp_register_script('modernizr', get_template_directory_uri().'/assets/js/libs/modernizr.min.js');
 	wp_register_script('jquery', get_template_directory_uri().'/assets/js/libs/jquery.min.js');
 	wp_register_script('velocity', get_template_directory_uri().'/assets/js/libs/velocity.min.js');
@@ -18,6 +19,7 @@ function my_enqueue_styles () {
 	wp_enqueue_style( 'fa' );
 	wp_enqueue_style( 'yakuhanjp' );
 	wp_enqueue_style( 'main' );
+	wp_enqueue_style('post');
 	wp_enqueue_script('modernizr');
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('velocity');

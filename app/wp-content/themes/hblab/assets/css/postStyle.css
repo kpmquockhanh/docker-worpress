@@ -1,0 +1,15 @@
+.post-content p {
+    text-overflow: ellipsis;
+    width: 95%;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+}
+
+.content-front-page {
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 10;
+    -webkit-box-orient: vertical;
+}
