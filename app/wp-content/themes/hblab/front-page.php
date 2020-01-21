@@ -130,7 +130,9 @@ $popularPost = new WP_Query( array(
                                                         <?php the_title(); ?>
 													</h3>
                                                     <div class="te-articles__list__item__content__summary">
+                                                        <div class="content-front-page">
 	                                                    <?= get_the_excerpt() ?>
+                                                        </div>
 													</div>
 												</div>
 											</div>
@@ -186,7 +188,9 @@ $popularPost = new WP_Query( array(
                                                             <?php the_title(); ?>
 														</h3>
                                                         <div class="te-articles__list__item__content__summary">
+                                                            <div class="content-front-page">
 	                                                        <?= get_the_excerpt() ?>
+                                                            </div>
 														</div>
 													</div>
 												</div>

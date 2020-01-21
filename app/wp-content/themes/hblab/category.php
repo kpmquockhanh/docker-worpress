@@ -101,21 +101,15 @@ $popularPost = new WP_Query( array(
                                                         </p>
                                                     </div>
                                                     <h3 class="te-articles__list__item__content__title">
-                                                        <!--
-                                                          tha_title() です
-
-                                                          文字数の制御をお願いします。
-                                                          全角 60文字 (スマホ表示で3行ほど) が目安です。
 
                                                         -->
                                                         <?php the_title(); ?>        </h3>
 
-                                                    <!--
-                                                      サマリーがある場合とない場合があります
-                                                      css側で 一行におさめています (... 処理)
-                                                    -->
-                                                    <div class="te-articles__list__item__content__summary">
-                                                        <?php the_content(); ?></div>
+                                                    <div class="te-articles__list__item__content__summary" >
+                                                        <div class="post-content">
+                                                            <?php the_excerpt(); ?>
+                                                        </div>
+                                                    </div>
 
                                                 </div>
                                             </div>
@@ -132,13 +126,6 @@ $popularPost = new WP_Query( array(
                         <div class="col-xs-12">
                             <div class="col-box">
 
-
-                                <!--
-
-                  memo :
-                  $categoryID枠がない場合はこのhr を消してください
-
-                -->
                                 <hr>
 
 
@@ -174,21 +161,12 @@ $popularPost = new WP_Query( array(
                                                             </p>
                                                         </div>
                                                         <h3 class="te-articles__list__item__content__title">
-                                                            <!--
-                                                              tha_title() です
-
-                                                              文字数の制御をお願いします。
-                                                              全角 60文字 (スマホ表示で3行ほど) が目安です。
-
-                                                            -->
                                                             <?php the_title(); ?> </h3>
 
-                                                        <!--
-                                                          サマリーがある場合とない場合があります
-                                                          css側で 一行におさめています (... 処理)
-                                                        -->
                                                         <div class="te-articles__list__item__content__summary">
-                                                            <?php the_content(); ?>
+                                                            <div class="content-front-page">
+                                                            <?= get_the_excerpt(); ?>
+                                                            </div>
                                                         </div>
 
                                                     </div>
@@ -256,21 +234,13 @@ $popularPost = new WP_Query( array(
                                                             </p>
                                                         </div>
                                                         <h3 class="te-articles__list__item__content__title">
-                                                            <!--
-                                                              tha_title() です
-
-                                                              文字数の制御をお願いします。
-                                                              全角 60文字 (スマホ表示で3行ほど) が目安です。
-
-                                                            -->
                                                             <?php the_title(); ?> </h3>
 
-                                                        <!--
-                                                          サマリーがある場合とない場合があります
-                                                          css側で 一行におさめています (... 処理)
-                                                        -->
                                                         <p class="te-articles__list__item__content__summary">
-                                                            <?php the_content(); ?></p>
+                                                            <div class="post-content">
+                                                            <?php the_excerpt(); ?>
+                                                            </div>
+                                                        </p>
 
                                                     </div>
                                                 </div>
