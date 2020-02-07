@@ -71,14 +71,13 @@ add_action( 'init', 'register_my_menu' );
  * Add custom logo
  */
 add_theme_support( 'custom-logo', [
-	'height' => 45,
-	'width'  => 224,
+	'height' => 100
 ]);
 
 /**
  * Create control setting your word
  */
-function add_your_word_setting($wp_customize) {
+function add_your_setting($wp_customize) {
 	// add a setting for the site logo
 	$wp_customize->add_setting('your_word');
 	// Add a control to upload the logo
@@ -90,8 +89,44 @@ function add_your_word_setting($wp_customize) {
 			)
 		)
 	);
+
+	// add a setting for the site logo
+	$wp_customize->add_setting('fb_link');
+	// Add a control to upload the logo
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'fb_link',
+			array(
+				'label' => 'Facebook URL',
+				'section' => 'title_tagline',
+				'settings' => 'fb_link',
+			)
+		)
+	);
+
+	// add a setting for the site logo
+	$wp_customize->add_setting('youtube_link');
+	// Add a control to upload the logo
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'youtube_link',
+			array(
+				'label' => 'Youtube URL',
+				'section' => 'title_tagline',
+				'settings' => 'youtube_link',
+			)
+		)
+	);
+
+	// add a setting for the site logo
+	$wp_customize->add_setting('twitter_link');
+	// Add a control to upload the logo
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'twitter_link',
+			array(
+				'label' => 'Twitter URL',
+				'section' => 'title_tagline',
+				'settings' => 'twitter_link',
+			)
+		)
+	);
 }
-add_action( 'customize_register', 'add_your_word_setting' );
+add_action( 'customize_register', 'add_your_setting' );
 
 /**
  *
@@ -140,4 +175,13 @@ function gt_posts_custom_column_views( $column ) {
 add_filter( 'manage_posts_columns', 'gt_posts_column_views' );
 add_action( 'manage_posts_custom_column', 'gt_posts_custom_column_views' );
 
+
+/**
+ * Limit length excerpt
+ */
+
+function custom_excerpt_length( $length ) {
+	return 20;
+}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 ?>

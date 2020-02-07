@@ -58,7 +58,10 @@ $popularPost = new WP_Query( array(
 		<h2 class="te-top-tags__title">注目のキーワード</h2>
 		<div class="te-tags">
 			<ul class="te-tags__list">
-				<?php foreach (get_tags() as $tag) : ?>
+				<?php foreach (get_tags([
+                    'number' => 10,
+                    'order' => 'DESC'
+				]) as $tag) : ?>
 					<li class="te-tags__list__item">
 						<a class="te-tags__list__item__hit" href="<?= get_tag_link($tag) ?>"><?=$tag->name?></a>
 					</li>

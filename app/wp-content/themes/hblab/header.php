@@ -95,7 +95,10 @@
 
 				<div class="te-search-modal__tags">
 					<ul class="te-search-modal__tags__list">
-						<?php foreach (get_tags() as $tag) : ?>
+							<?php foreach (get_tags([
+                                'number' => 10,
+                                'order' => 'DESC'
+                            ]) as $tag) : ?>
 							<li class="te-search-modal__tags__list__item">
 								<a class="te-search-modal__tags__list__item__hit" href="<?= get_tag_link( $tag ) ?>">
 									<?= $tag->name ?>
@@ -314,6 +317,9 @@
                         'container_class' => 'te-gnav__list',
                         'container' => 'ul',
                         'menu_class' => 'te-gnav__list',
+                        'fallback_cb' => function () {
+                            echo 'No header menu';
+                        }
                     ) );
                     ?>
 
